@@ -13,6 +13,12 @@ const tasks = [
   },
 ];
 
+// Trier liste
+
+function sortArray(arr) {
+  arr.sort((a, b) => a.priority - b.priority);
+}
+
 // Afficher liste
 
 const list = document.querySelector("#list");
@@ -21,6 +27,8 @@ function displayList(arr) {
   list.innerHTML = "";
 
   const priorityClasses = ["high", "normal", "low"];
+
+  sortArray(arr);
 
   arr.forEach((item, index) => {
     const listEl = document.createElement("li");
@@ -56,6 +64,8 @@ taskForm.addEventListener("submit", (e) => {
 
   tasks.push(task);
   displayList(tasks);
+
+  taskForm.querySelector('input[type="text"]').value = "";
 });
 
 // Supprimer les taches
