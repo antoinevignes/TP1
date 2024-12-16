@@ -16,17 +16,19 @@ const tasks = [
 const list = document.querySelector("#list");
 
 function displayList(arr) {
-  let priorityClasses = ["high", "normal", "low"];
+  const priorityClasses = ["high", "normal", "low"];
 
   arr.forEach((item) => {
     const listEl = document.createElement("li");
 
     listEl.className = priorityClasses[item.priority - 1];
 
-    listEl.innerHTML = `<label>
-                          <input type="checkbox">
-                          ${item.title}
-                        </label>`;
+    listEl.innerHTML = `
+    <label>
+      <input type="checkbox">
+      ${item.title}
+    </label>
+    `;
 
     list.appendChild(listEl);
   });
