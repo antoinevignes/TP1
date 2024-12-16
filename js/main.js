@@ -13,7 +13,8 @@
 //   },
 // ];
 
-const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+const storedTasks = localStorage.getItem("tasks");
+const tasks = storedTasks ? JSON.parse(storedTasks) : [];
 // Trier liste
 
 function sortArray(arr) {
@@ -95,8 +96,14 @@ deleteBtn.addEventListener("click", () => {
 
   if (selectedIndexes.length === 1) {
     message.innerHTML = `La tâche a été supprimée avec succès.`;
+    setTimeout(() => {
+      message.innerHTML = "";
+    }, 3000);
   } else {
     message.innerHTML = `${selectedIndexes.length} tâches supprimées avec succès.`;
+    setTimeout(() => {
+      message.innerHTML = "";
+    }, 3000);
   }
 
   displayList(tasks);
