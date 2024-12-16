@@ -19,16 +19,17 @@ const list = document.querySelector("#list");
 
 function displayList(arr) {
   list.innerHTML = "";
+
   const priorityClasses = ["high", "normal", "low"];
 
-  arr.forEach((item) => {
+  arr.forEach((item, index) => {
     const listEl = document.createElement("li");
 
     listEl.className = priorityClasses[item.priority - 1];
 
     listEl.innerHTML = `
     <label>
-      <input type="checkbox">
+      <input type="checkbox" data-index="${index}">
       ${item.title}
     </label>
     `;
@@ -54,5 +55,28 @@ taskForm.addEventListener("submit", (e) => {
   };
 
   tasks.push(task);
+  displayList(tasks);
+});
+
+// Supprimer les taches
+const deleteBtn = document.querySelector("#deleteBtn");
+
+deleteBtn.addEventListener("click", () => {
+  const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+  const selectedIndexes = [];
+
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      selectedIndexes.push(parseInt(checkbox.dataset.index));
+    }
+  });
+
+  tasks.splice(
+    0,
+    tasks.length,
+    ...tasks.filter((_, index) => !selectedIndexes.includes(index))
+  );
+
   displayList(tasks);
 });
