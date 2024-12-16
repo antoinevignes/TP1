@@ -79,10 +79,12 @@ deleteBtn.addEventListener("click", () => {
     ...tasks.filter((_, index) => !selectedIndexes.includes(index))
   );
 
+  const message = document.querySelector("#delete-msg");
+
   if (selectedIndexes.length === 1) {
-    alert(`La tâche a été supprimée avec succès.`);
+    message.innerHTML = `La tâche a été supprimée avec succès.`;
   } else {
-    alert(`${selectedIndexes.length} tâches supprimées avec succès.`);
+    message.innerHTML = `${selectedIndexes.length} tâches supprimées avec succès.`;
   }
 
   displayList(tasks);
