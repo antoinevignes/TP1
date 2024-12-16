@@ -13,9 +13,12 @@ const tasks = [
   },
 ];
 
+// Afficher liste
+
 const list = document.querySelector("#list");
 
 function displayList(arr) {
+  list.innerHTML = "";
   const priorityClasses = ["high", "normal", "low"];
 
   arr.forEach((item) => {
@@ -35,3 +38,21 @@ function displayList(arr) {
 }
 
 displayList(tasks);
+
+// Ajouter un element
+
+const taskForm = document.querySelector("#task-form");
+
+taskForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(taskForm);
+
+  const task = {
+    title: formData.get("task"),
+    priority: formData.get("priority"),
+  };
+
+  tasks.push(task);
+  displayList(tasks);
+});

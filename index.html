@@ -8,6 +8,17 @@
   </head>
   <body>
     <ul id="list"></ul>
+    <form method="post" id="task-form">
+      <label for="task">Tâches</label>
+      <input type="text" name="task" id="task" />
+      <label for="priority">Priorité</label>
+      <select name="priority" id="priority">
+        <option value="1">Élevé</option>
+        <option value="2">Normal</option>
+        <option value="3">Bas</option>
+      </select>
+      <input type="submit" value="Ajouter" />
+    </form>
     <script src="js/main.js"></script>
   </body>
 </html>
