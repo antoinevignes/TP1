@@ -67,7 +67,7 @@ taskForm.addEventListener("submit", (e) => {
   }
 
   const task = {
-    title: formData.get("task"),
+    title: title,
     priority: formData.get("priority"),
   };
 
