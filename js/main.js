@@ -15,6 +15,7 @@
 
 const storedTasks = localStorage.getItem("tasks");
 const tasks = storedTasks ? JSON.parse(storedTasks) : [];
+
 // Trier liste
 
 function sortArray(arr) {
@@ -58,6 +59,12 @@ taskForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const formData = new FormData(taskForm);
+  const title = formData.get("task");
+
+  if (!title) {
+    alert("Veuillez remplir tous les champs");
+    return;
+  }
 
   const task = {
     title: formData.get("task"),
