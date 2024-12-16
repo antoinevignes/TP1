@@ -59,6 +59,7 @@ taskForm.addEventListener("submit", (e) => {
 });
 
 // Supprimer les taches
+
 const deleteBtn = document.querySelector("#deleteBtn");
 
 deleteBtn.addEventListener("click", () => {
@@ -77,6 +78,12 @@ deleteBtn.addEventListener("click", () => {
     tasks.length,
     ...tasks.filter((_, index) => !selectedIndexes.includes(index))
   );
+
+  if (selectedIndexes.length === 1) {
+    alert(`La tâche a été supprimée avec succès.`);
+  } else {
+    alert(`${selectedIndexes.length} tâches supprimées avec succès.`);
+  }
 
   displayList(tasks);
 });
