@@ -1,18 +1,19 @@
-const tasks = [
-  {
-    title: "Apprendre mon cours de JavaScript",
-    priority: 1,
-  },
-  {
-    title: "Créer mon compte Github",
-    priority: 2,
-  },
-  {
-    title: "Répondre à mes emails",
-    priority: 3,
-  },
-];
+// const tasks = [
+//   {
+//     title: "Apprendre mon cours de JavaScript",
+//     priority: 1,
+//   },
+//   {
+//     title: "Créer mon compte Github",
+//     priority: 2,
+//   },
+//   {
+//     title: "Répondre à mes emails",
+//     priority: 3,
+//   },
+// ];
 
+const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 // Trier liste
 
 function sortArray(arr) {
@@ -64,6 +65,7 @@ taskForm.addEventListener("submit", (e) => {
 
   tasks.push(task);
   displayList(tasks);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
   taskForm.querySelector('input[type="text"]').value = "";
 });
@@ -98,4 +100,5 @@ deleteBtn.addEventListener("click", () => {
   }
 
   displayList(tasks);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 });
